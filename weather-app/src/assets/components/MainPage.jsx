@@ -1,5 +1,4 @@
-import SearchBar from "./SearchBar";
-
+import CitySearch from "./CitySearch";
 function MainPage() {
   return (
     <>
@@ -13,7 +12,7 @@ function MainPage() {
             Choose a location to see the weather forecast
           </p>
           <div className="p-5 w-full">
-            <SearchBar />
+            <CitySearch />
           </div>
         </div>
       </div>

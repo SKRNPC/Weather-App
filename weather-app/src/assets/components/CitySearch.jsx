@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWeather } from "./redux/features/weatherSlice";
-import SearchBar from "./assets/components/SearchBar";
+import SearchBar from "./SearchBar";
+import { fetchWeather } from "../../redux/features/weatherSlice";
 
 function CitySearch() {
   const dispatch = useDispatch();
