@@ -1,4 +1,5 @@
 import CitySearch from "./CitySearch";
+
 function MainPage() {
   return (
     <>

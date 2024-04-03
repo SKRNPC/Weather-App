@@ -33,6 +33,6 @@ function SearchBar({ onSearch }) {
   );
 }
 SearchBar.propTypes = {
-  onSearch: PropTypes.func.isRequired, // onSearch fonksiyon tipinde ve zorunlu olmalı
+  onSearch: PropTypes.func.isRequired,
 };
 export default SearchBar;

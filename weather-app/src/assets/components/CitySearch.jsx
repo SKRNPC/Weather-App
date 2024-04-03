@@ -1,15 +1,17 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { fetchWeather } from "../../redux/features/weatherSlice";
 
 function CitySearch() {
   const dispatch = useDispatch();
-  const weather = useSelector((state) => state.weather.data);
+  const navigate = useNavigate();
 
   const handleSearch = (city) => {
     dispatch(fetchWeather(city));
+    navigate(`/weather/${city}`);
   };
-  console.log(weather);
+
   return (
     <div>
       <SearchBar onSearch={handleSearch} />
