@@ -1,11 +1,19 @@
 import ListCity from "./components/WeatherPage";
 import MainPage from "./components/MainPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import bg from "./Background.png";
 function App() {
   return (
     <>
-      <div className="  bg-lime-800">
+      <div
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+        }}
+        className="text-white"
+      >
         <Router>
           <Routes>
             <Route path="/" element={<MainPage />} />

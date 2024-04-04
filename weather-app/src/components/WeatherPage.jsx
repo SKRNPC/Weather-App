@@ -55,6 +55,7 @@ function WeatherPage() {
                 </p>
                 <p>
                   {weather.weather[0].description}
+                  {weather.weather[0].icon}
                   <Icons iconCode={weather.weather[0].icon} />
                 </p>
               </div>
