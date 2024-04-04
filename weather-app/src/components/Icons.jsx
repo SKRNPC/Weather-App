@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 function Icons({ iconCode }) {
   const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`;
 
-  return (
-    <div>
-      <img src={iconUrl} alt="Weather Icon" />
-    </div>
-  );
+  return <img src={iconUrl} alt="Weather Icon" />;
 }
 Icons.propTypes = {
   iconCode: PropTypes.string.isRequired,

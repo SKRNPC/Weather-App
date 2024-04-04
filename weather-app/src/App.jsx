@@ -1,5 +1,5 @@
-import ListCity from "./assets/components/ListCity";
-import MainPage from "./assets/components/MainPage";
+import ListCity from "./components/WeatherPage";
+import MainPage from "./components/MainPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
