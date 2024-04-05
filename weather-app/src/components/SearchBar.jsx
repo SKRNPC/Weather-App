@@ -18,7 +18,7 @@ function SearchBar({ onSearch }) {
               placeholder="Search location"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="input border rounded w-full max-w-sm text-black focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:outline-none transition duration-300 hover:border-yellow-500 hover:bg-yellow-100 p-3"
+              className="input rounded w-full max-w-sm text-gray-400 bg-gray-800 focus:border-blue-light focus:ring-2 focus:ring-blue-light focus:outline-none transition duration-300 hover:border-gray-500 hover:bg-gray-600 p-3"
             />
           </div>
         </form>

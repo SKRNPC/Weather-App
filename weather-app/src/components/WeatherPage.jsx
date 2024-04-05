@@ -38,52 +38,79 @@ function WeatherPage() {
   };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(today);
   return (
-    <>
-      <div>
-        {weather.name ? (
-          <div>
-            <div>
-              <div>
-                {" "}
-                <h2>
-                  {weather.name}, {weather.sys.country}
-                </h2>
-                <p>{formattedDate}</p>
-                <p>{weather.main.temp}°C</p>
-                <p>
-                  {weather.main.temp_min}°C / {weather.main.temp_max}°C
-                </p>
-                <p>
-                  {weather.weather[0].description}
-                  {weather.weather[0].icon}
-                  <Icons iconCode={weather.weather[0].icon} />
-                </p>
+    <div className="min-h-screen">
+      {weather.name ? (
+        <div className="p-3">
+          <div
+            className="rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full 
+           max-w-3xl mx-auto p-3"
+          >
+            <div className="flex flex-col flex-grow">
+              <div className="">
+                <div className="flex flex-col p-1">
+                  <h2 className="flex mt-1">
+                    {weather.name}, {weather.sys.country}
+                  </h2>
+                  <p className="flex text-xs">{formattedDate}</p>
+                </div>
+                <div className="flex justify-between ">
+                  <div className="flex flex-col p-1 mt-16">
+                    <p className="flex text-5xl">{weather.main.temp}°c</p>
+                    <p className="flex mt-3 text-sm">
+                      {weather.main.temp_min}°c / {weather.main.temp_max}°c
+                    </p>
+                    <p className="flex">
+                      {weather.weather[0].description.charAt(0).toUpperCase() +
+                        weather.weather[0].description.slice(1)}
+                    </p>
+                  </div>
+                  <div className="flex items-end justify-end">
+                    <Icons iconCode={weather.weather[0].icon} />
+                  </div>
+                </div>
               </div>
-              <div>
-                <p>Thermal Sensation: {weather.main.feels_like}</p>
-                <p>pop: {forecast?.list?.[0].pop}</p>
-                <p>Wind Speed: {weather.wind.speed} m/s</p>
-                <p>Air Humudity: {weather.main.humidity}%</p>
-                <p>Sea Level: {forecast?.list?.[0].main?.sea_level}m</p>
-              </div>
-              <div className="flex flex-row">
-                <h2>5 Day Forecast for {city}</h2>
-                {Object.entries(processedForecast).map(([date, summary]) => (
-                  <div key={date}>
-                    <h3>{date}</h3>
-                    <p>Low: {summary.tempMin}°C</p>
-                    <p>High: {summary.tempMax}°C</p>
-                    <p>Weather: {summary.weatherMain}</p>
+            </div>
+          </div>
+          <div className="mt-3 ">
+            <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden text-gray-50 w-full max-w-3xl mx-auto p-3">
+              <div className="flex flex-col justify-between space-y-3">
+                {[
+                  ["Thermal Sensation", weather.main.feels_like],
+                  ["Probability of rain", forecast?.list?.[0].pop],
+                  ["Wind Speed", `${weather.wind.speed} m/s`],
+                  ["Air Humidity", `${weather.main.humidity}%`],
+                  ["Sea Level", `${forecast?.list?.[0].main?.sea_level}m`],
+                ].map(([label, value], index) => (
+                  <div
+                    key={index}
+                    className={`flex justify-between ${
+                      index === 4 ? "" : "border-b border-gray-700"
+                    } py-2`}
+                  >
+                    <p className="ml-5">{label}:</p>
+                    <p className="mr-5">{value}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        ) : (
-          <p></p>
-        )}
-      </div>
-    </>
+          <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full max-w-3xl mx-auto p-3">
+            <div className="m-2 text-center flex justify-between w-full ">
+              {Object.entries(processedForecast).map(([date, summary]) => (
+                <div key={date} className="">
+                  <h3>{date}</h3>
+                  <Icons iconCode={summary.iconCode} />
+                  <p>{summary.tempMax}°C</p>
+                  <p>{summary.tempMin}°C</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p></p>
+      )}
+    </div>
   );
 }
 

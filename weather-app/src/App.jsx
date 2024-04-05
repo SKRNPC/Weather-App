@@ -1,7 +1,7 @@
 import ListCity from "./components/WeatherPage";
 import MainPage from "./components/MainPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import bg from "./Background.png";
+import bg from "./images/Background.png";
 function App() {
   return (
     <>
@@ -10,7 +10,6 @@ function App() {
           backgroundImage: `url(${bg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "100vh",
         }}
         className="text-white"
       >
