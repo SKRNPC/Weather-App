@@ -5,6 +5,11 @@ import { useParams } from "react-router-dom";
 import Icons from "./Icons";
 import { fetchFiveDayForecast } from "../redux/features/forecastSlice";
 import forecastProcessor from "./forecastProcessor";
+import ThermoSvg from "../images/svg/thermal.svg";
+import PopSvg from "../images/svg/pop.svg";
+import WindSvg from "../images/svg/wind.svg";
+import RulerSvg from "../images/svg/ruler.svg";
+import AirSvg from "../images/svg/air-hum.svg";
 
 function WeatherPage() {
   const dispatch = useDispatch();
@@ -40,7 +45,7 @@ function WeatherPage() {
   return (
     <div className="min-h-screen">
       {weather.name ? (
-        <div className="p-3">
+        <div className="p-5">
           <div
             className="rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full 
            max-w-3xl mx-auto p-3"
@@ -48,15 +53,17 @@ function WeatherPage() {
             <div className="flex flex-col flex-grow">
               <div className="">
                 <div className="flex flex-col p-1">
-                  <h2 className="flex mt-1">
+                  <h2 className="flex mt-1 font-bold">
                     {weather.name}, {weather.sys.country}
                   </h2>
-                  <p className="flex text-xs">{formattedDate}</p>
+                  <p className="flex text-xs font-thin">{formattedDate}</p>
                 </div>
                 <div className="flex justify-between ">
                   <div className="flex flex-col p-1 mt-16">
-                    <p className="flex text-5xl">{weather.main.temp}°c</p>
-                    <p className="flex mt-3 text-sm">
+                    <p className="flex text-5xl font-bold">
+                      {weather.main.temp}°c
+                    </p>
+                    <p className="flex mt-3 text-sm font-thin">
                       {weather.main.temp_min}°c / {weather.main.temp_max}°c
                     </p>
                     <p className="flex">
@@ -71,26 +78,61 @@ function WeatherPage() {
               </div>
             </div>
           </div>
-          <div className="mt-3 ">
-            <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden text-gray-50 w-full max-w-3xl mx-auto p-3">
-              <div className="flex flex-col justify-between space-y-3">
-                {[
-                  ["Thermal Sensation", weather.main.feels_like],
-                  ["Probability of rain", forecast?.list?.[0].pop],
-                  ["Wind Speed", `${weather.wind.speed} m/s`],
-                  ["Air Humidity", `${weather.main.humidity}%`],
-                  ["Sea Level", `${forecast?.list?.[0].main?.sea_level}m`],
-                ].map(([label, value], index) => (
-                  <div
-                    key={index}
-                    className={`flex justify-between ${
-                      index === 4 ? "" : "border-b border-gray-700"
-                    } py-2`}
-                  >
-                    <p className="ml-5">{label}:</p>
-                    <p className="mr-5">{value}</p>
-                  </div>
-                ))}
+
+          <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden w-full max-w-3xl mx-auto p-3 font-bold text-gray-200">
+            <div className="border-b border-gray-500 my-4">
+              <div className="flex flex-row items-center my-4 ">
+                <div className="items center ml-1">
+                  <img src={ThermoSvg} alt="" />
+                </div>
+                <p className="p-1 ml-3">Thermal Sensation</p>
+                <div className="p-1 ml-auto flex justify-between">
+                  <p>{weather.main.feels_like}</p>
+                </div>
+              </div>
+            </div>
+            <div className="border-b border-gray-500 my-4">
+              <div className="flex flex-row items-center my-4 ">
+                <div className="items center">
+                  <img src={PopSvg} alt="" />
+                </div>
+                <p className="p-1 ml-2">Probability of rain</p>
+                <div className="p-1 ml-auto flex justify-between">
+                  <p>{forecast?.list?.[0].pop}</p>
+                </div>
+              </div>
+            </div>
+            <div className="border-b border-gray-500 my-4">
+              <div className="flex flex-row items-center my-4 ">
+                <div className="items center">
+                  <img src={WindSvg} alt="" />
+                </div>
+                <p className="p-1 ml-2">Wind Speed</p>
+                <div className="p-1 ml-auto flex justify-between">
+                  <p>{`${weather.wind.speed} m/s`}</p>
+                </div>
+              </div>
+            </div>
+            <div className="border-b border-gray-500 my-4">
+              <div className="flex flex-row items-center my-4 ">
+                <div className="items center">
+                  <img src={AirSvg} alt="" />
+                </div>
+                <p className="p-1 ml-2">Air Humidity</p>
+                <div className="p-1 ml-auto flex justify-between">
+                  <p>{`%${weather.main.humidity}`}</p>
+                </div>
+              </div>
+            </div>
+            <div className="border-b border-gray-500 my-4">
+              <div className="flex flex-row items-center my-4 ">
+                <div className="items center">
+                  <img src={RulerSvg} alt="" />
+                </div>
+                <p className="p-1 ml-2">Sea Level</p>
+                <div className="p-1 ml-auto flex justify-between">
+                  <p>{`${forecast?.list?.[0].main?.sea_level}m`}</p>
+                </div>
               </div>
             </div>
           </div>

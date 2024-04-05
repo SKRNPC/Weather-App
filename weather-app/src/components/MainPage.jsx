@@ -1,5 +1,6 @@
 import CitySearch from "./CitySearch";
 import LogoSvg from "../images/svg/marca.svg";
+
 function MainPage() {
   return (
     <>
