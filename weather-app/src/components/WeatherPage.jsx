@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeather } from "../redux/features/weatherSlice";
 import { useParams } from "react-router-dom";
@@ -10,8 +11,9 @@ import PopSvg from "../images/svg/pop.svg";
 import WindSvg from "../images/svg/wind.svg";
 import RulerSvg from "../images/svg/ruler.svg";
 import AirSvg from "../images/svg/air-hum.svg";
+import BgImage from "./BgImage";
 
-function WeatherPage() {
+function WeatherPage({ backgroundImage }) {
   const dispatch = useDispatch();
   const { city } = useParams();
   const weather = useSelector((state) => state.weather.data);
@@ -41,15 +43,18 @@ function WeatherPage() {
     month: "long",
     day: "numeric",
   };
+
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(today);
   return (
     <div className="min-h-screen">
       {weather.name ? (
-        <div className="p-5">
+        <div className="p-5 flex flex-col h-auto">
           <div
-            className="rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full 
+            className="rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full
            max-w-3xl mx-auto p-3"
+            style={{ backgroundImage: { backgroundImage } }}
           >
+            <BgImage bgCode={weather.weather[0].icon} />
             <div className="flex flex-col flex-grow">
               <div className="">
                 <div className="flex flex-col p-1">
@@ -72,14 +77,13 @@ function WeatherPage() {
                     </p>
                   </div>
                   <div className="flex items-end justify-end">
-                    <Icons iconCode={weather.weather[0].icon} />
+                    <Icons iconCode={weather.weather[0].icon} size="250px" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden w-full max-w-3xl mx-auto p-3 font-bold text-gray-200">
+          <div className="mt-3 rounded-xl bg-gray-800 w-full max-w-3xl mx-auto p-3 font-bold text-gray-200">
             <div className="border-b border-gray-500 my-4">
               <div className="flex flex-row items-center my-4 ">
                 <div className="items center ml-1">
@@ -136,14 +140,17 @@ function WeatherPage() {
               </div>
             </div>
           </div>
-          <div className="mt-3 rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full max-w-3xl mx-auto p-3">
-            <div className="m-2 text-center flex justify-between w-full ">
+          <div className="mt-3 justify-center rounded-xl bg-gray-800 text-gray-50 flex w-full max-w-3xl mx-auto p-3">
+            <div className="flex justify-between text-center ">
               {Object.entries(processedForecast).map(([date, summary]) => (
                 <div key={date} className="">
                   <h3>{date}</h3>
-                  <Icons iconCode={summary.iconCode} />
-                  <p>{summary.tempMax}°C</p>
-                  <p>{summary.tempMin}°C</p>
+                  <div className=" w-16 h-16">
+                    <Icons iconCode={summary.iconCode} />
+                  </div>
+
+                  <p>{Math.round(summary.tempMax)}°C</p>
+                  <p>{Math.round(summary.tempMin)}°C</p>
                 </div>
               ))}
             </div>
@@ -155,5 +162,7 @@ function WeatherPage() {
     </div>
   );
 }
-
+WeatherPage.propTypes = {
+  backgroundImage: PropTypes.string.isRequired,
+};
 export default WeatherPage;
