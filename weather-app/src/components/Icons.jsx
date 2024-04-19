@@ -32,6 +32,10 @@ function Icons({ iconCode }) {
       return <img src={CloudyDay} alt="" />;
     case "04n":
       return <img src={Cloudynight} alt="" />;
+    case "9d":
+      return <img src={RainyDay} alt="" />;
+    case "9n":
+      return <img src={RainyNight} alt="" />;
     case "10d":
       return <img src={RainyDay} alt="" />;
     case "10n":
