@@ -82,37 +82,34 @@ const WeatherBackground = ({ weatherDescription }) => {
   <WeatherPage backgroundImage={backgroundImage} />;
   return (
     <div
-      className="rounded-xl bg-gray-800 overflow-hidden text-gray-50 flex w-full
-           max-w-3xl mx-auto p-3"
+      className="rounded-xl bg-gray-800 text-gray-50 flex h-screen mt-3"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="flex flex-col flex-grow">
-        <div className="">
-          <div className="flex flex-col p-1">
-            <h2 className="flex mt-1 font-bold">
-              {weather.name}, {weather.sys.country}
-            </h2>
-            <p className="flex text-xs font-thin">{formattedDate}</p>
-          </div>
-          <div className="flex justify-between ">
-            <div className="flex flex-col p-1 mt-16">
-              <p className="flex text-5xl font-bold">{weather.main.temp}°c</p>
-              <p className="flex mt-3 text-sm font-thin">
-                {weather.main.temp_min}°c / {weather.main.temp_max}°c
-              </p>
-              <p className="flex">
-                {weather.weather[0].description.charAt(0).toUpperCase() +
-                  weather.weather[0].description.slice(1)}
-              </p>
-            </div>
-            <div className="flex items-end justify-end">
-              <Icons iconCode={weather.weather[0].icon} size="250px" />
-            </div>
-          </div>
+      <div className="flex flex-col w-1/2 justify-between">
+        <div className="flex flex-col p-12">
+          <h2 className="flex mt-1 text-3xl font-bold">
+            {weather.name}, {weather.sys.country}
+          </h2>
+          <p className="flex text-sm font-thin">{formattedDate}</p>
+        </div>
+        <div className="flex flex-col p-12 mb-4 ">
+          <p className="flex text-5xl font-bold">{weather.main.temp}°c</p>
+          <p className="flex mt-3 text-sm font-thin">
+            {weather.main.temp_min}°c / {weather.main.temp_max}°c
+          </p>
+          <p className="flex">
+            {weather.weather[0].description.charAt(0).toUpperCase() +
+              weather.weather[0].description.slice(1)}
+          </p>
+        </div>
+      </div>
+      <div className="flex w-1/2 items-end justify-end ">
+        <div className="flex-end">
+          <Icons iconCode={weather.weather[0].icon} />
         </div>
       </div>
     </div>

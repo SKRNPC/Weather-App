@@ -16,7 +16,7 @@ function MainPage() {
           <p className="text-xs text-gray-200 ">
             Choose a location to see the weather forecast
           </p>
-          <div className="p-5 w-full">
+          <div className="p-5 w-full max-w-md">
             <CitySearch />
           </div>
         </div>

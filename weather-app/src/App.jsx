@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import bg from "./images/Background.png";
 function App() {
   return (
-    <>
+    <div>
       <div
         style={{
           backgroundImage: `url(${bg})`,
@@ -20,7 +20,7 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </>
+    </div>
   );
 }
 
