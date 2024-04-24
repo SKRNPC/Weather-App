@@ -82,7 +82,7 @@ const WeatherBackground = ({ weatherDescription }) => {
   <WeatherPage backgroundImage={backgroundImage} />;
   return (
     <div
-      className="rounded-xl bg-gray-800 text-gray-50 flex h-screen mt-3"
+      className="rounded-xl bg-gray-800 text-gray-50 flex h-auto sm:h-screen mt-3"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -90,14 +90,16 @@ const WeatherBackground = ({ weatherDescription }) => {
       }}
     >
       <div className="flex flex-col w-1/2 justify-between">
-        <div className="flex flex-col p-12">
-          <h2 className="flex mt-1 text-3xl font-bold">
+        <div className="flex flex-col p-8 sm:p-12">
+          <h2 className="flex mt-1 text-xl sm:text-3xl font-bold">
             {weather.name}, {weather.sys.country}
           </h2>
           <p className="flex text-sm font-thin">{formattedDate}</p>
         </div>
-        <div className="flex flex-col p-12 mb-4 ">
-          <p className="flex text-5xl font-bold">{weather.main.temp}°c</p>
+        <div className="flex flex-col p-8 sm:p-12 mb-4 ">
+          <p className="flex text-3xl sm:text-5xl font-bold">
+            {weather.main.temp}°c
+          </p>
           <p className="flex mt-3 text-sm font-thin">
             {weather.main.temp_min}°c / {weather.main.temp_max}°c
           </p>
