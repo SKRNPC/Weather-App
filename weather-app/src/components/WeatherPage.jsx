@@ -8,7 +8,7 @@ import forecastProcessor from "./forecastProcessor";
 import ThermoSvg from "../images/svg/thermal.svg";
 import PopSvg from "../images/svg/pop.svg";
 import WindSvg from "../images/svg/wind.svg";
-import RulerSvg from "../images/svg/ruler.svg";
+import PreSvg from "../images/svg/pressure.svg";
 import AirSvg from "../images/svg/air-hum.svg";
 import WeatherBackground from "./WeatherBackground";
 import CitySearch from "./CitySearch";
@@ -39,15 +39,15 @@ function WeatherPage() {
   return (
     <div>
       {weather.name ? (
-        <div className="p-5 flex flex-col sm:flex-row h-auto sm:h-screen">
-          <div className="flex flex-col w-full sm:w-1/2 ">
+        <div className="p-5 flex flex-col lg:flex-row sm:h-screen md:h-screen">
+          <div className="flex flex-col w-full lg:w-1/2 sm:h-1/2 lg:h-auto h-auto">
             <div className="">
               <CitySearch />
             </div>
             <WeatherBackground weatherDescription={weather.weather[0].icon} />
           </div>
-          <div className="flex flex-col sm:ml-5 ml-0 w-full sm:w-1/2 ">
-            <div className="rounded-xl mt-3 sm:mt-0 bg-gray-800 p-3 font-bold text-gray-200  sm:justify-end justify-center">
+          <div className="flex flex-col lg:ml-5 ml-0 w-full lg:w-1/2">
+            <div className="rounded-xl mt-3 lg:mt-0 bg-gray-800 p-3 font-bold text-gray-200  lg:justify-end justify-center">
               <div className="border-b border-gray-500 my-4">
                 <div className="flex flex-row items-center my-4 ">
                   <div className="items center ml-1">
@@ -95,16 +95,16 @@ function WeatherPage() {
               <div className="border-b border-gray-500 my-4">
                 <div className="flex flex-row items-center my-4 ">
                   <div className="items center">
-                    <img src={RulerSvg} alt="" />
+                    <img src={PreSvg} alt="" />
                   </div>
-                  <p className="p-1 ml-2">Sea Level</p>
+                  <p className="p-1 ml-2">Pressure</p>
                   <div className="p-1 ml-auto flex justify-between">
-                    <p>{`${forecast?.list?.[0].main?.sea_level}m`}</p>
+                    <p>{`${forecast?.list?.[0].main?.pressure}hPa`}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="mt-3 rounded-xl bg-gray-800 text-gray-50 flex sm:h-screen items-center p-3 sm:justify-end justify-center">
+            <div className="mt-3 rounded-xl bg-gray-800 text-gray-50 flex lg:h-auto items-center p-3 lg:justify-end justify-center">
               {Object.entries(processedForecast).map(([date, summary]) => (
                 <div
                   key={date}

@@ -82,7 +82,7 @@ const WeatherBackground = ({ weatherDescription }) => {
   <WeatherPage backgroundImage={backgroundImage} />;
   return (
     <div
-      className="rounded-xl bg-gray-800 text-gray-50 flex h-auto sm:h-screen mt-3"
+      className="rounded-xl bg-gray-800 text-gray-50 flex sm:h-full md:h-full mt-3"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
