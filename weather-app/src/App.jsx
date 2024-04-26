@@ -11,7 +11,7 @@ function App() {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="text-white"
+        className="text-white min-h-svh"
       >
         <Router>
           <Routes>

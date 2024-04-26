@@ -39,15 +39,15 @@ function WeatherPage() {
   return (
     <div>
       {weather.name ? (
-        <div className="p-5 flex flex-col lg:flex-row sm:h-screen md:h-screen">
-          <div className="flex flex-col w-full lg:w-1/2 sm:h-1/2 lg:h-auto h-auto">
+        <div className="p-5 flex flex-col xl:flex-row sm:h-auto lg:min-h-screen xl:h-screen">
+          <div className="flex flex-col w-full xl:w-1/2 sm:h-1/2 lg:h-1/2 xl:h-auto">
             <div className="">
               <CitySearch />
             </div>
             <WeatherBackground weatherDescription={weather.weather[0].icon} />
           </div>
-          <div className="flex flex-col lg:ml-5 ml-0 w-full lg:w-1/2">
-            <div className="rounded-xl mt-3 lg:mt-0 bg-gray-800 p-3 font-bold text-gray-200  lg:justify-end justify-center">
+          <div className="flex flex-col xl:ml-5 ml-0 w-full xl:w-1/2">
+            <div className="rounded-xl mt-3 xl:mt-0 bg-gray-800 p-3 font-bold text-gray-200  xl:justify-end justify-center">
               <div className="border-b border-gray-500 my-4">
                 <div className="flex flex-row items-center my-4 ">
                   <div className="items center ml-1">
@@ -104,7 +104,7 @@ function WeatherPage() {
                 </div>
               </div>
             </div>
-            <div className="mt-3 rounded-xl bg-gray-800 text-gray-50 flex lg:h-auto items-center p-3 lg:justify-end justify-center">
+            <div className="mt-3 rounded-xl bg-gray-800 text-gray-50 flex xl:h-auto items-center p-3 xl:justify-end justify-center">
               {Object.entries(processedForecast).map(([date, summary]) => (
                 <div
                   key={date}
